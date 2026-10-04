@@ -99,4 +99,3 @@ with tempfile.TemporaryDirectory() as folder, patch('indexer.service.Context',la
         assert sources['custom']['snapshot']['count']==1 and sources['noto']['snapshot']['count']==2
 os.environ.pop('FONT_INDEXER_MIN_INTERVAL')
 print('PASS: Noto, Adobe, Font Library, Font Squirrel adapters; unknown fields; blocked HTML; independent snapshots')
-
