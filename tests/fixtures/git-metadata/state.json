@@ -1,0 +1,67 @@
+{
+  "adlam": {
+    "families": {
+      "Noto Sans Adlam": {
+        "files": [
+          "fonts/NotoSansAdlam/googlefonts/ttf/NotoSansAdlam-Regular.ttf",
+          "fonts/NotoSansAdlam/googlefonts/ttf/NotoSansAdlam-Bold.ttf",
+          "fonts/NotoSansAdlam/googlefonts/variable-ttf/NotoSansAdlam[wght].ttf",
+          "fonts/NotoSansAdlam/full/otf/NotoSansAdlam-Regular.otf",
+          "fonts/NotoSansAdlam/full/otf/NotoSansAdlam-Bold.otf",
+          "fonts/NotoSansAdlam/full/ttf/NotoSansAdlam-Regular.ttf",
+          "fonts/NotoSansAdlam/full/ttf/NotoSansAdlam-Bold.ttf",
+          "fonts/NotoSansAdlam/full/slim-variable-ttf/NotoSansAdlam[wght].ttf",
+          "fonts/NotoSansAdlam/full/variable-ttf/NotoSansAdlam[wght].ttf",
+          "fonts/NotoSansAdlam/hinted/ttf/NotoSansAdlam-Regular.ttf",
+          "fonts/NotoSansAdlam/hinted/ttf/NotoSansAdlam-Bold.ttf",
+          "fonts/NotoSansAdlam/unhinted/otf/NotoSansAdlam-Regular.otf",
+          "fonts/NotoSansAdlam/unhinted/otf/NotoSansAdlam-Bold.otf",
+          "fonts/NotoSansAdlam/unhinted/ttf/NotoSansAdlam-Regular.ttf",
+          "fonts/NotoSansAdlam/unhinted/ttf/NotoSansAdlam-Bold.ttf",
+          "fonts/NotoSansAdlam/unhinted/slim-variable-ttf/NotoSansAdlam[wght].ttf",
+          "fonts/NotoSansAdlam/unhinted/variable-ttf/NotoSansAdlam[wght].ttf"
+        ],
+        "latest_release": {
+          "notes": "Noto Sans Adlam v3.002\n\nThis release:\n\n- Corrects the form of ADLAM VOWEL LENGTHENER when nukta is present (#3)\n- Adds a medial form to ADLAM NASALIZATION MARK (#4)\n- Fixes an interpolation bug (#13)\n- Removes the fraction slash character (#2)\n- Improves the positioning of marks on the dotted circle (#9)\n- Removes the erroneous 'case' feature (#10)\n- Makes the HAMZA stack on modifier glyphs (#11)\n",
+          "published": "2024-05-16T09:03:52+00:00",
+          "url": "https://github.com/notofonts/adlam/releases/tag/NotoSansAdlam-v3.002",
+          "version": "v3.002"
+        }
+      },
+      "Noto Sans Adlam Unjoined": {
+        "files": [
+          "fonts/NotoSansAdlamUnjoined/googlefonts/ttf/NotoSansAdlamUnjoined-Regular.ttf",
+          "fonts/NotoSansAdlamUnjoined/googlefonts/ttf/NotoSansAdlamUnjoined-Bold.ttf",
+          "fonts/NotoSansAdlamUnjoined/googlefonts/variable-ttf/NotoSansAdlamUnjoined[wght].ttf",
+          "fonts/NotoSansAdlamUnjoined/full/otf/NotoSansAdlamUnjoined-Regular.otf",
+          "fonts/NotoSansAdlamUnjoined/full/otf/NotoSansAdlamUnjoined-Bold.otf",
+          "fonts/NotoSansAdlamUnjoined/full/ttf/NotoSansAdlamUnjoined-Regular.ttf",
+          "fonts/NotoSansAdlamUnjoined/full/ttf/NotoSansAdlamUnjoined-Bold.ttf",
+          "fonts/NotoSansAdlamUnjoined/full/slim-variable-ttf/NotoSansAdlamUnjoined[wght].ttf",
+          "fonts/NotoSansAdlamUnjoined/full/variable-ttf/NotoSansAdlamUnjoined[wght].ttf",
+          "fonts/NotoSansAdlamUnjoined/hinted/ttf/NotoSansAdlamUnjoined-Regular.ttf",
+          "fonts/NotoSansAdlamUnjoined/hinted/ttf/NotoSansAdlamUnjoined-Bold.ttf",
+          "fonts/NotoSansAdlamUnjoined/unhinted/otf/NotoSansAdlamUnjoined-Regular.otf",
+          "fonts/NotoSansAdlamUnjoined/unhinted/otf/NotoSansAdlamUnjoined-Bold.otf",
+          "fonts/NotoSansAdlamUnjoined/unhinted/ttf/NotoSansAdlamUnjoined-Regular.ttf",
+          "fonts/NotoSansAdlamUnjoined/unhinted/ttf/NotoSansAdlamUnjoined-Bold.ttf",
+          "fonts/NotoSansAdlamUnjoined/unhinted/slim-variable-ttf/NotoSansAdlamUnjoined[wght].ttf",
+          "fonts/NotoSansAdlamUnjoined/unhinted/variable-ttf/NotoSansAdlamUnjoined[wght].ttf"
+        ],
+        "latest_release": {
+          "notes": "Noto Sans Adlam Unjoined\n\nThis release adds a missing languagesystem, fixing mark positioning.\n",
+          "published": "2024-05-27T09:25:48+00:00",
+          "url": "https://github.com/notofonts/adlam/releases/tag/NotoSansAdlamUnjoined-v3.003",
+          "version": "v3.003"
+        }
+      }
+    },
+    "known_releases": [
+      "NotoSansAdlamUnjoined-v3.001",
+      "NotoSansAdlam-v3.001",
+      "NotoSansAdlam-v3.002",
+      "NotoSansAdlamUnjoined-v3.002",
+      "NotoSansAdlamUnjoined-v3.003"
+    ]
+  }
+}

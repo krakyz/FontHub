@@ -1,0 +1,4 @@
+const themeKey='fonthub.theme';
+function applyTheme(theme){document.documentElement.dataset.theme=theme;const button=document.getElementById('theme-toggle');if(button){button.textContent=theme==='dark'?'Светлая тема':'Тёмная тема';button.setAttribute('aria-pressed',String(theme==='dark'))}}
+let initialTheme='light';try{initialTheme=localStorage.getItem(themeKey)||'light'}catch{}applyTheme(initialTheme);
+document.addEventListener('DOMContentLoaded',()=>{const button=document.createElement('button');button.id='theme-toggle';button.type='button';button.onclick=()=>{const theme=document.documentElement.dataset.theme==='dark'?'light':'dark';applyTheme(theme);try{localStorage.setItem(themeKey,theme)}catch{}};(document.getElementById('header-theme')||document.querySelector('header')).append(button);applyTheme(initialTheme)});

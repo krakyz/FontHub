@@ -1,0 +1,38 @@
+name: Checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            python: .venv/bin/python
+            flags: ''
+          - os: windows-latest
+            python: .venv/Scripts/python.exe
+            flags: --windows
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python -m venv .venv
+      - run: ${{ matrix.python }} -m pip install -r requirements.txt -r indexer/requirements.txt
+      - run: ${{ matrix.python }} scripts/checks.py ${{ matrix.flags }}
+      - run: node test_search.js
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker compose config --quiet
+      - run: docker compose -p fonthub-ci build
+      - run: docker run --rm --network none --entrypoint python fonthub-ci-fonthub tests/test_smoke.py

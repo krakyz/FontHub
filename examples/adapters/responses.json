@@ -1,0 +1,13 @@
+{
+  "https://example.org/catalogue.json": {
+    "families": [{
+      "id": "fixture",
+      "name": "Fixture Font",
+      "designer": "Example",
+      "languages": ["en_Latn"],
+      "subsets": ["latin"],
+      "unknown_field": "retained in raw",
+      "files": [{"name": "Fixture.ttf", "format": "TTF", "url": "https://example.org/fonts/Fixture.ttf"}]
+    }]
+  }
+}

@@ -1,0 +1,101 @@
+[
+  {
+    "faces": 10000,
+    "families": 2500,
+    "cases": {
+      "all": {
+        "first_seconds": 0.2672,
+        "median_seconds": 0.0444,
+        "total": 2500
+      },
+      "substring": {
+        "first_seconds": 0.0144,
+        "median_seconds": 0.01,
+        "total": 111
+      },
+      "filtered": {
+        "first_seconds": 0.0288,
+        "median_seconds": 0.0283,
+        "total": 833
+      },
+      "page": {
+        "first_seconds": 0.05,
+        "median_seconds": 0.0491,
+        "total": 2500
+      },
+      "characters": {
+        "first_seconds": 0.0633,
+        "median_seconds": 0.0608,
+        "total": 2500
+      }
+    },
+    "python_search_peak_bytes": 73162,
+    "process_resident_bytes": 53637120
+  },
+  {
+    "faces": 30000,
+    "families": 7500,
+    "cases": {
+      "all": {
+        "first_seconds": 0.189,
+        "median_seconds": 0.1806,
+        "total": 7500
+      },
+      "substring": {
+        "first_seconds": 0.0152,
+        "median_seconds": 0.0147,
+        "total": 111
+      },
+      "filtered": {
+        "first_seconds": 0.0905,
+        "median_seconds": 0.0912,
+        "total": 2500
+      },
+      "page": {
+        "first_seconds": 0.1924,
+        "median_seconds": 0.1967,
+        "total": 7500
+      },
+      "characters": {
+        "first_seconds": 0.2453,
+        "median_seconds": 0.2423,
+        "total": 7500
+      }
+    },
+    "python_search_peak_bytes": 72381,
+    "process_resident_bytes": 57151488
+  },
+  {
+    "faces": 100000,
+    "families": 25000,
+    "cases": {
+      "all": {
+        "first_seconds": 0.6622,
+        "median_seconds": 0.6432,
+        "total": 25000
+      },
+      "substring": {
+        "first_seconds": 0.0498,
+        "median_seconds": 0.0155,
+        "total": 113
+      },
+      "filtered": {
+        "first_seconds": 0.3139,
+        "median_seconds": 0.3134,
+        "total": 8333
+      },
+      "page": {
+        "first_seconds": 0.7516,
+        "median_seconds": 0.8778,
+        "total": 25000
+      },
+      "characters": {
+        "first_seconds": 0.846,
+        "median_seconds": 0.8505,
+        "total": 25000
+      }
+    },
+    "python_search_peak_bytes": 72381,
+    "process_resident_bytes": 60190720
+  }
+]

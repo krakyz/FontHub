@@ -1,0 +1,95 @@
+[
+  {
+    "faces": 10000,
+    "families": 2500,
+    "cases": {
+      "all": {
+        "first_seconds": 0.868,
+        "median_seconds": 0.1325,
+        "total": 2500
+      },
+      "substring": {
+        "first_seconds": 0.0248,
+        "median_seconds": 0.0202,
+        "total": 111
+      },
+      "filtered": {
+        "first_seconds": 0.0484,
+        "median_seconds": 0.0501,
+        "total": 833
+      },
+      "page": {
+        "first_seconds": 0.2429,
+        "median_seconds": 0.1465,
+        "total": 2500
+      },
+      "characters": {
+        "first_seconds": 0.1336,
+        "median_seconds": 0.135,
+        "total": 2500
+      }
+    }
+  },
+  {
+    "faces": 30000,
+    "families": 7500,
+    "cases": {
+      "all": {
+        "first_seconds": 2.4641,
+        "median_seconds": 0.6924,
+        "total": 7500
+      },
+      "substring": {
+        "first_seconds": 0.047,
+        "median_seconds": 0.0598,
+        "total": 111
+      },
+      "filtered": {
+        "first_seconds": 0.2688,
+        "median_seconds": 0.2401,
+        "total": 2500
+      },
+      "page": {
+        "first_seconds": 0.7347,
+        "median_seconds": 0.8041,
+        "total": 7500
+      },
+      "characters": {
+        "first_seconds": 0.6635,
+        "median_seconds": 0.432,
+        "total": 7500
+      }
+    }
+  },
+  {
+    "faces": 100000,
+    "families": 25000,
+    "cases": {
+      "all": {
+        "first_seconds": 9.042,
+        "median_seconds": 2.0746,
+        "total": 25000
+      },
+      "substring": {
+        "first_seconds": 0.1432,
+        "median_seconds": 0.1345,
+        "total": 113
+      },
+      "filtered": {
+        "first_seconds": 1.0931,
+        "median_seconds": 0.4392,
+        "total": 8333
+      },
+      "page": {
+        "first_seconds": 2.2036,
+        "median_seconds": 2.1425,
+        "total": 25000
+      },
+      "characters": {
+        "first_seconds": 2.0285,
+        "median_seconds": 1.8194,
+        "total": 25000
+      }
+    }
+  }
+]

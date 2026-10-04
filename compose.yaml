@@ -1,0 +1,36 @@
+services:
+  indexer:
+    build:
+      context: .
+      dockerfile: indexer/Dockerfile
+    environment:
+      FONT_INDEXER_TOKEN: ${FONT_INDEXER_TOKEN:-}
+    volumes:
+      - indexer-data:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8766/api/v1/health',timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      start_period: 30s
+  fonthub:
+    build: .
+    environment:
+      FONTHUB_INDEXER_URL: http://indexer:8766
+      FONTHUB_INDEXER_TOKEN: ${FONT_INDEXER_TOKEN:-}
+    ports:
+      - "127.0.0.1:${FONTHUB_HTTP_PORT:-8765}:8765"
+    volumes:
+      - fonthub-data:/data
+    depends_on:
+      indexer:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8765/health',timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      start_period: 30s
+volumes:
+  indexer-data:
+  fonthub-data:

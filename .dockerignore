@@ -1,0 +1,25 @@
+.venv
+venv
+data
+backups
+.git
+.github
+.hyperglot-cache
+**/__pycache__
+*.py[cod]
+*.log
+.env
+.env.*
+*.sqlite
+*.sqlite3
+*.db
+*.zip
+*.ttf
+*.otf
+*.ttc
+*.otc
+*.woff
+*.woff2
+
+# Generated publication bundles
+dist/

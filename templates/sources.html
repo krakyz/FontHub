@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Источники — FontHub</title><script src="/static/theme.js"></script><link rel="stylesheet" href="/static/style.css"></head>
+<body>{% include 'header.html' %}<main class="sources-page">
+<div class="sources-heading"><h1>Источники</h1><span id="sources-summary" role="status">Загрузка статусов…</span></div>
+<p id="sources-notice" role="status" class="source-error" hidden></p>
+<section class="settings-panel"><h2 class="section-bar">Интернет-источники</h2>
+<div class="sources-scroll"><table class="sources-table"><thead><tr><th>Источник</th><th>В поиске</th><th>Индекс</th><th>Обновлён</th><th>Действия</th></tr></thead><tbody>
+{% for item in sources if item.id != 'local' %}
+<tr data-source="{{ item.id }}">
+<td class="source-identity"><strong>{{ item.name }}</strong><a href="{{ item.url }}">Репозиторий / сайт ↗</a><small data-file-mode></small><label>OTS <select data-ots="{{ item.id }}"><option value="skip">Не требовать</option><option value="warn">Проверять и предупреждать</option><option value="block">Проверять и блокировать</option></select></label></td>
+<td class="source-enabled-cell"><label><input type="checkbox" data-enabled="{{ item.id }}" aria-label="Использовать {{ item.name }} в поиске" disabled><span data-enabled-label>Загрузка…</span></label><small data-enable-hint></small></td>
+<td class="source-index-cell"><span data-index-status="{{ item.id }}" role="status">Загрузка…</span><small data-index-count></small>
+<details class="source-diagnostics"><summary>Диагностика</summary><p data-source-error class="source-error" hidden></p><p><span class="source-status">Ссылка не проверена</span><small class="source-checked"></small></p><button type="button" data-check="{{ item.id }}">Проверить ссылку</button></details></td>
+<td class="source-updated">—</td>
+<td class="source-actions"><button type="button" data-sync="{{ item.id }}">Получить индекс</button><a data-source-search hidden href="/?scope=remote&amp;source={{ item.id }}">Открыть поиск</a></td>
+</tr>{% endfor %}</tbody></table></div>
+<div class="sources-footnote">Переключатель управляет поиском по сохранённому индексу. Отключение не удаляет индекс и шрифты из архива. Предпросмотр и импорт запускают загрузку файлов отдельно.</div></section>
+<section class="settings-panel local-source-panel"><h2 class="section-bar">Локальный источник</h2><div class="settings-content"><div class="local-source-heading"><strong>Папка inbox</strong><span>Всегда включена · проверка каждые 5 секунд</span></div><code class="inbox-path">{{ inbox }}</code><label>OTS <select data-ots="local"><option value="block">Проверять и блокировать</option><option value="warn">Проверять и предупреждать</option><option value="skip">Не требовать</option></select></label><p>Файлы из вложенных папок тоже импортируются автоматически.</p>
+<details class="source-help"><summary>Как добавить шрифты вручную</summary><p>Распакуйте скачанный пакет и поместите файлы TTF, OTF, WOFF, WOFF2, TTC или OTC в inbox. ZIP-архивы нужно распаковать самостоятельно.</p><p>Для назначения источника используйте подпапку с его идентификатором, например <code>inbox/google-fonts</code>. Разные форматы и источники сохраняются отдельно; точные повторы внутри одного источника не создают дубликатов.</p><p class="muted">Внешние лицензии и описания сохраняйте рядом с исходным пакетом: локальный импорт читает метаданные самих шрифтов.</p></details></div></section>
+</main><script src="/static/sources.js"></script></body></html>

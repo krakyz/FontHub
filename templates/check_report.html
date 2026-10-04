@@ -1,0 +1,8 @@
+{% macro check_report(report, labels) %}
+{% if report %}
+{% if report.get('engine') %}<p>Проверка: {{ report.engine }}{% if report.get('version') %} {{ report.version }}{% endif %}</p>{% endif %}
+{% if report.get('seconds') is not none %}<p>Длительность: {{ report.seconds|round(3) }} с</p>{% endif %}
+{% if report.get('message') %}<pre class="check-diagnostic">{{ report.message }}</pre>{% endif %}
+{% if report.get('faces') %}<p>Начертаний проверено: {{ report.faces|length }}</p>{% for item in report.faces %}<details><summary>Начертание {{ item.index + 1 }} — {{ labels.get(item.status,item.status) }}</summary>{{ check_report(item, labels) }}</details>{% endfor %}{% endif %}
+{% else %}<p>Диагностика ещё не получена.</p>{% endif %}
+{% endmacro %}

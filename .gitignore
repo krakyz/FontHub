@@ -1,0 +1,36 @@
+# Runtime data and local font archives
+.venv/
+venv/
+data/
+backups/
+.hyperglot-cache
+*.sqlite
+*.sqlite3
+*.sqlite-wal
+*.sqlite-shm
+*.db
+*.log
+*.ttf
+*.otf
+*.ttc
+*.otc
+*.woff
+*.woff2
+*.zip
+
+# Python, tooling and local configuration
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.env
+.env.*
+!.env.example
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Generated publication bundles
+dist/
