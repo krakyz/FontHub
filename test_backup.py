@@ -10,7 +10,7 @@ from contextlib import closing
 from archive_backup import backup,restore
 
 with tempfile.TemporaryDirectory() as temporary:
-    root=Path(temporary);data=root/'data';data.mkdir();(data/'originals').mkdir()
+    root=Path(temporary).resolve();data=root/'data';data.mkdir();(data/'originals').mkdir()
     content=b'immutable font fixture';checksum=hashlib.sha256(content).hexdigest()
     original=data/'originals'/(checksum+'.ttf');original.write_bytes(content)
     # Leave a WAL connection open: copying catalog.sqlite alone would miss rows.
@@ -19,7 +19,7 @@ with tempfile.TemporaryDirectory() as temporary:
     archive=root/'backup.zip';backup(data,archive)
     restored=root/'restored';restore(archive,restored)
     with closing(sqlite3.connect(restored/'catalog.sqlite')) as check:
-        assert check.execute('SELECT path FROM files').fetchone()[0]==str(restored/'originals'/original.name)
+        assert Path(check.execute('SELECT path FROM files').fetchone()[0]).resolve()==(restored/'originals'/original.name).resolve()
     assert (restored/'originals'/original.name).read_bytes()==content
     try: restore(archive,restored)
     except ValueError: pass
