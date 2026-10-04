@@ -3,6 +3,11 @@
 This verifies process interruption, not a hardware power-loss simulation.
 Every crash uses an isolated archive; the user's inbox is never touched.
 """
+
+# Direct execution from the repository root keeps application imports available.
+import sys as _test_sys
+from pathlib import Path as _TestPath
+_test_sys.path.insert(0,str(_TestPath(__file__).resolve().parents[1]))
 import os,subprocess,tempfile,shutil,sqlite3,hashlib
 from pathlib import Path
 python=str(Path('.venv/Scripts/python.exe').resolve())

@@ -57,13 +57,13 @@ while previously published snapshots remain active. Re-run sync explicitly.
 ## Checks
 
 ```powershell
-.venv/Scripts/python.exe test_app.py
-.venv/Scripts/python.exe test_indexer.py
-.venv/Scripts/python.exe test_google_fonts.py
-.venv/Scripts/python.exe test_adapters.py
-.venv/Scripts/python.exe test_live_sources.py
-.venv/Scripts/python.exe test_source_zip.py
-node test_search.js
+.venv/Scripts/python.exe tests/test_app.py
+.venv/Scripts/python.exe tests/test_indexer.py
+.venv/Scripts/python.exe tests/test_google_fonts.py
+.venv/Scripts/python.exe tests/test_adapters.py
+.venv/Scripts/python.exe tests/test_live_sources.py
+.venv/Scripts/python.exe tests/test_source_zip.py
+node tests/test_search.js
 ```
 
 test_app checks archive/import/source separation. test_indexer uses a local Git
@@ -105,7 +105,7 @@ the short metadata cache so a newly obtained index unlocks the switch immediatel
 
 API: `POST /api/sources/<id>/enabled` with boolean JSON `enabled`; missing/invalid
 values return 400, activation without a usable index returns 409. Local is not
-switchable. Run `python test_source_settings.py` for state and search checks.
+switchable. Run `python tests/test_source_settings.py` for state and search checks.
 
 ### Sources page layout
 
@@ -165,9 +165,9 @@ Default Compose creates separate data; migrating a host archive requires explici
 backup/restore, not merely rebuilding an image.
 
 
-Validation commands for this iteration: `test_import_recovery.py`,
-`test_search_sql.py`, `test_backup.py`, `test_adapter_check.py`, existing archive,
-source/language/indexer/ZIP checks and `node test_search.js`. An indexer backup
+Validation commands for this iteration: `tests/test_import_recovery.py`,
+`tests/test_search_sql.py`, `tests/test_backup.py`, `tests/test_adapter_check.py`, existing archive,
+source/language/indexer/ZIP checks and `node tests/test_search.js`. An indexer backup
 was also restored from the actual published snapshots into a new check directory.
 Archive migration retained 3644 files and 3694 analyzed faces before the scanner
 resumed pending inbox work. Timestamped pre-migration copies are in `backups/`;

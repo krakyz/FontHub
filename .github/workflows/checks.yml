@@ -28,7 +28,7 @@ jobs:
       - run: python -m venv .venv
       - run: ${{ matrix.python }} -m pip install -r requirements.txt -r indexer/requirements.txt
       - run: ${{ matrix.python }} scripts/checks.py ${{ matrix.flags }}
-      - run: node test_search.js
+      - run: node tests/test_search.js
   docker:
     runs-on: ubuntu-latest
     steps:

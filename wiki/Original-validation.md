@@ -117,10 +117,10 @@ also covers OTS jobs; physical hashes and policy keys require no relocation.
 
 ## Tests
 
-`test_original_checks.py`: all six format paths, per-face collections, byte
+`tests/test_original_checks.py`: all six format paths, per-face collections, byte
 preservation, gate/pause, refusal and explicit override, history, source dedup,
 result filtering, guarded previews, warning policy, timeout and checksum errors.
 Existing pipeline, recovery, exports, downloads, SQLite search and backup tests
 cover the integration boundaries. No destructive failure tests use the user archive.
-`test_ots_recovery.py` kills the native-check worker after validation but before
+`tests/test_ots_recovery.py` kills the native-check worker after validation but before
 recording its result, then verifies one completed report and unchanged bytes.

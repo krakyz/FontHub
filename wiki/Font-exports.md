@@ -60,9 +60,9 @@ use `indexer_client.binary`, retaining its URL/download policy and size checks.
 
 ## Verification
 
-`test_font_exports.py` checks genuine WOFF bytes, native format restrictions,
+`tests/test_font_exports.py` checks genuine WOFF bytes, native format restrictions,
 original preservation, persistent pause, request deduplication, published-file
-reuse after an interrupted completion and failure/retry. `test_google_fonts.py`
+reuse after an interrupted completion and failure/retry. `tests/test_google_fonts.py`
 checks explicit pinned source download, stale links and metadata-only page visits.
 
 Additional tests cover exporting a selected bold face from a TTC collection,

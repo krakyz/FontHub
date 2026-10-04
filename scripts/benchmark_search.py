@@ -5,6 +5,9 @@ describe metadata search only; large CJK fonts and import parsing need separate
 measurements. Timings use medians; the first read is reported as cold latency.
 """
 import argparse,json,os,statistics,tempfile,time,tracemalloc
+import sys
+from pathlib import Path
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 parser=argparse.ArgumentParser();parser.add_argument('--sizes',nargs='+',type=int,default=[10000,30000,100000]);parser.add_argument('--output',required=True);args=parser.parse_args()
 def resident_bytes():
     """Current process RSS includes Python, SQLite and loaded libraries.

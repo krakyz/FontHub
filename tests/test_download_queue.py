@@ -1,4 +1,9 @@
 """Offline queue invariants with real font bytes, no upstream traffic."""
+
+# Direct execution from the repository root keeps application imports available.
+import sys as _test_sys
+from pathlib import Path as _TestPath
+_test_sys.path.insert(0,str(_TestPath(__file__).resolve().parents[1]))
 import os,json,shutil,tempfile,time
 from pathlib import Path
 from unittest.mock import patch

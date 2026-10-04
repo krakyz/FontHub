@@ -1,4 +1,9 @@
 """Restore committed WAL data and font bytes; reject corruption and overwrite."""
+
+# Direct execution from the repository root keeps application imports available.
+import sys as _test_sys
+from pathlib import Path as _TestPath
+_test_sys.path.insert(0,str(_TestPath(__file__).resolve().parents[1]))
 import hashlib
 import os
 import shutil

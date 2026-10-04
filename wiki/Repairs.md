@@ -30,7 +30,7 @@ request. Existing catalogue records are not silently deleted or replaced.
 `repair_candidates` stores ready comparison artifacts and reports;
 `repair_choices` stores original hash, chosen hash, source, choice and timestamp.
 Archive backups include `repairs`; restore relocates candidate paths.
-`test_font_repairs.py` checks real OTS output, byte preservation, both choices,
+`tests/test_font_repairs.py` checks real OTS output, byte preservation, both choices,
 invalid sources, refused candidates and portable backups.
 
 ## Массовая проверка восстановления
@@ -51,4 +51,4 @@ invalid sources, refused candidates and portable backups.
 
 Работа переживает перезапуск через постоянную очередь. Публикация идемпотентна по hash и источнику: повтор после аварии не создаёт повторный экземпляр. Файл исправления сохраняется отдельно; восстановление резервной копии переносит его путь вместе с базой, где хранятся состояния и происхождение.
 
-Проверка: `test_auto_repairs.py` создаёт реальный OTF с некорректным searchRange cmap, проверяет отказ OTS, автоматическую пересборку, сохранность оригинала, штатный анализ исправленной копии и отметку происхождения. Отдельно проверяет удержание частично читаемой cmap и неудачного восстановления в карантине. `test_font_repairs.py` проверяет ручные варианты, отказ кандидата и резервное восстановление.
+Проверка: `tests/test_auto_repairs.py` создаёт реальный OTF с некорректным searchRange cmap, проверяет отказ OTS, автоматическую пересборку, сохранность оригинала, штатный анализ исправленной копии и отметку происхождения. Отдельно проверяет удержание частично читаемой cmap и неудачного восстановления в карантине. `tests/test_font_repairs.py` проверяет ручные варианты, отказ кандидата и резервное восстановление.

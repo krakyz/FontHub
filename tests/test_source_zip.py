@@ -1,4 +1,9 @@
 """Bounded archive handling; path traversal members are never extracted by path."""
+
+# Direct execution from the repository root keeps application imports available.
+import sys as _test_sys
+from pathlib import Path as _TestPath
+_test_sys.path.insert(0,str(_TestPath(__file__).resolve().parents[1]))
 import tempfile,zipfile
 from pathlib import Path
 from unittest.mock import patch

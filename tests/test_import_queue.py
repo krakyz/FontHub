@@ -4,6 +4,11 @@ Verify that parsing never compresses, pause is durable, a running import commits
 preview failures preserve catalogue/originals, retries recover, claims are unique
 and restored queue paths follow the new installation root.
 """
+
+# Direct execution from the repository root keeps application imports available.
+import sys as _test_sys
+from pathlib import Path as _TestPath
+_test_sys.path.insert(0,str(_TestPath(__file__).resolve().parents[1]))
 import hashlib,json,os,shutil,tempfile,time,sqlite3
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
@@ -77,6 +82,6 @@ with tempfile.TemporaryDirectory() as folder:
     with closing(sqlite3.connect(restored/'catalog.sqlite')) as con:
         assert con.execute("SELECT paused FROM queue_control WHERE kind='import'").fetchone()[0]==1
         for kind,identity,path in con.execute("SELECT kind,identity,input_path FROM work_queue WHERE status='queued'"):
-            assert Path(path).is_relative_to(restored)
+            assert Path(path).resolve().is_relative_to(restored.resolve())
             if kind=='import': assert identity==path
     print('PASS: independent stages, durable pause, in-flight commit, failure/retry, quarantine, concurrent claims, source staging, portable restore')

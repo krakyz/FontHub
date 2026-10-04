@@ -173,13 +173,13 @@ docker compose cp indexer:/data/indexer-backup.zip ./indexer-backup.zip
 [Wiki](wiki/Home.md): архитектура, жизненный цикл индексатора, контракт API, дубликаты, эксплуатация и восстановление. Комментарии в коде объясняют границы ответственности и важные решения.
 
 ```powershell
-.venv/Scripts/python.exe test_app.py
-.venv/Scripts/python.exe test_indexer.py
-.venv/Scripts/python.exe test_google_fonts.py
-.venv/Scripts/python.exe test_adapters.py
-.venv/Scripts/python.exe test_live_sources.py
-.venv/Scripts/python.exe test_source_zip.py
-node test_search.js
+.venv/Scripts/python.exe tests/test_app.py
+.venv/Scripts/python.exe tests/test_indexer.py
+.venv/Scripts/python.exe tests/test_google_fonts.py
+.venv/Scripts/python.exe tests/test_adapters.py
+.venv/Scripts/python.exe tests/test_live_sources.py
+.venv/Scripts/python.exe tests/test_source_zip.py
+node tests/test_search.js
 ```
 
 Тест индексатора использует локальный Git-репозиторий и проверяет сохранение снимка после ошибки. Интеграционный тест Google Fonts требует запущенного индексатора с опубликованным снимком и скачивает небольшое семейство во временный архив.
@@ -198,7 +198,7 @@ node test_search.js
 заявления и приблизительные совпадения письменности (≈), а точный поиск по
 символам — только проанализированные файлы архива.
 На внешней странице языки и subsets отображаются отдельно «По данным источника».
-Проверка: `.venv/Scripts/python.exe test_source_languages.py`.
+Проверка: `.venv/Scripts/python.exe tests/test_source_languages.py`.
 
 Раздел «Источники» содержит сохраняемые переключатели участия интернет-источников
 в поиске. Без готового индекса источник нельзя включить; он отсутствует в фильтрах.
@@ -227,12 +227,12 @@ node test_search.js
 .venv/Scripts/python.exe archive_backup.py backup --kind indexer --data data/indexer --output backups/indexer.zip
 .venv/Scripts/python.exe archive_backup.py restore --input backups/archive.zip --data restored-data
 .venv/Scripts/python.exe -m indexer.check examples.adapters.example_json --fixture examples/adapters/responses.json
-.venv/Scripts/python.exe test_import_recovery.py
-.venv/Scripts/python.exe test_import_queue.py
-.venv/Scripts/python.exe test_preview_recovery.py
-.venv/Scripts/python.exe test_queued_cmap.py
-.venv/Scripts/python.exe test_search_sql.py
-.venv/Scripts/python.exe test_backup.py
+.venv/Scripts/python.exe tests/test_import_recovery.py
+.venv/Scripts/python.exe tests/test_import_queue.py
+.venv/Scripts/python.exe tests/test_preview_recovery.py
+.venv/Scripts/python.exe tests/test_queued_cmap.py
+.venv/Scripts/python.exe tests/test_search_sql.py
+.venv/Scripts/python.exe tests/test_backup.py
 ```
 
 Восстановление допускается только в новую папку. Compose проверен сборкой,
@@ -241,11 +241,11 @@ node test_search.js
 
 ## Скачивание в выбранном формате
 
-На странице начертания доступны оригинал и экспорт в родной TTF/OTF, WOFF и WOFF2. Недостающие файлы готовятся по нажатию через отдельную очередь конвертации и кэшируются; готовый WOFF2 предпросмотра используется повторно. Изменение контуров TTF ↔ OTF не выполняется. На сетевых страницах можно скачать конкретный файл источника без импорта. Подробности: [Font exports](wiki/Font-exports.md). Проверка: `.venv/Scripts/python.exe test_font_exports.py`.
+На странице начертания доступны оригинал и экспорт в родной TTF/OTF, WOFF и WOFF2. Недостающие файлы готовятся по нажатию через отдельную очередь конвертации и кэшируются; готовый WOFF2 предпросмотра используется повторно. Изменение контуров TTF ↔ OTF не выполняется. На сетевых страницах можно скачать конкретный файл источника без импорта. Подробности: [Font exports](wiki/Font-exports.md). Проверка: `.venv/Scripts/python.exe tests/test_font_exports.py`.
 
 ## Очередь сетевых загрузок
 
-Скачивание файла источника и добавление семейства в архив используют отдельную очередь «Загрузки». Она показывает байты, поддерживает паузу, отмену и повтор ошибок. Один файл скачивается однократно для обоих действий; готовый кэш доступен сразу. Импорт начинается после загрузки и может оставаться на паузе независимо от сети. Лимиты источника обрабатываются через Retry-After. Подробности: [Download queue](wiki/Download-queue.md). Проверка: `.venv/Scripts/python.exe test_download_queue.py`.
+Скачивание файла источника и добавление семейства в архив используют отдельную очередь «Загрузки». Она показывает байты, поддерживает паузу, отмену и повтор ошибок. Один файл скачивается однократно для обоих действий; готовый кэш доступен сразу. Импорт начинается после загрузки и может оставаться на паузе независимо от сети. Лимиты источника обрабатываются через Retry-After. Подробности: [Download queue](wiki/Download-queue.md). Проверка: `.venv/Scripts/python.exe tests/test_download_queue.py`.
 
 В разделе карантина доступна массовая подготовка исправлений всех отклонённых OTS файлов. Результаты видны в каталоге проверок; сохранение выбранной версии остаётся явным действием пользователя.
 

@@ -1,4 +1,9 @@
 """Real repair output, refused candidates, selection and portable lineage."""
+
+# Direct execution from the repository root keeps application imports available.
+import sys as _test_sys
+from pathlib import Path as _TestPath
+_test_sys.path.insert(0,str(_TestPath(__file__).resolve().parents[1]))
 import os,tempfile,shutil,sqlite3
 from pathlib import Path
 from unittest.mock import patch
@@ -20,7 +25,7 @@ with tempfile.TemporaryDirectory() as folder:
  assert client.get('/originals/'+digest).data==before
  archive=Path(folder)/'backup.zip';restored=Path(folder)/'restored';archive_backup.backup(app.DATA,archive);archive_backup.restore(archive,restored)
  con=sqlite3.connect(restored/'catalog.sqlite')
- candidate=Path(con.execute('SELECT path FROM repair_candidates').fetchone()[0]);assert candidate.is_relative_to(restored) and candidate.is_file()
+ candidate=Path(con.execute('SELECT path FROM repair_candidates').fetchone()[0]);assert candidate.resolve().is_relative_to(restored.resolve()) and candidate.is_file()
  assert con.execute('SELECT COUNT(*) FROM repair_choices').fetchone()[0]==2;con.close()
  # A failed sanitization cannot produce an accepted/downloadable candidate.
  with app.db() as con:

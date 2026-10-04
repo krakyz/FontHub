@@ -1,4 +1,9 @@
 """Metadata assertions must never be presented as measured coverage."""
+
+# Direct execution from the repository root keeps application imports available.
+import sys as _test_sys
+from pathlib import Path as _TestPath
+_test_sys.path.insert(0,str(_TestPath(__file__).resolve().parents[1]))
 from source_languages import source_languages
 assert source_languages({'declared_languages':['ru_Cyrl','en_Latn'],'subsets':['menu','latin']})['status']=={'rus':'declared','eng':'declared'}
 assert source_languages({'declared_languages':['rus_Cyrl','eng_Latn']})['status']['rus']=='declared'

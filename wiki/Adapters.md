@@ -127,11 +127,11 @@ are a future capability, not emulated with partial snapshots.
 ## Tests and extension workflow
 
 1. Add the adapter module and a small saved-response fixture.
-2. Run `test_adapters.py` and `test_indexer.py`; test missing/changed data as well
+2. Run `tests/test_adapters.py` and `tests/test_indexer.py`; test missing/changed data as well
    as successful parsing. Verify no binary is downloaded during collection.
 3. Restart indexer, trigger that source's sync, inspect the job and saved evidence.
 4. Verify search/detail and, when advertised, explicit preview/import in a temporary
-   archive. `test_live_sources.py` does this for one Noto and Adobe font; acquisition
+   archive. `tests/test_live_sources.py` does this for one Noto and Adobe font; acquisition
    is limited to the already-downloaded file when exercising the import endpoint.
 5. Update this table and the README with actual live status and limitations.
 
@@ -161,7 +161,7 @@ Approximate matches retain ≈; they are not verified language support. The exac
 analyzed archive files. The remote detail page separates “По данным источника”
 (language names/original codes, subsets, no progress bars) from unavailable
 measured coverage. Preview does not promote declarations to verified coverage.
-Run `python test_source_languages.py` for normalization and offline search checks.
+Run `python tests/test_source_languages.py` for normalization and offline search checks.
 
 Unknown values in the search result table use ?, except sample and added-date cells, which retain an em dash.
 
@@ -195,5 +195,5 @@ It never publishes. Cross-source ID collisions are checked only on publication.
 Add malformed/empty response fixtures, then verify explicit import in an isolated
 archive before documenting an adapter as ready.
 
-`test_adapter_check.py` exercises captured-only metadata, empty catalogue rejection,
+`tests/test_adapter_check.py` exercises captured-only metadata, empty catalogue rejection,
 unapproved artifact hosts and inactive adapter rejection.

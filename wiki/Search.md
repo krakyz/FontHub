@@ -36,7 +36,7 @@ precomputed family projections or remote projection storage.
 
 ## Reproducible measurements
 
-`python benchmark_search.py --output benchmarks/search-after.json` creates a
+`python scripts/benchmark_search.py --output benchmarks/search-after.json` creates a
 temporary synthetic archive: 10k/30k/100k faces, four faces per family, two sources,
 mixed variable/static types and 95 ASCII characters. No font files are parsed.
 Each query runs four times, reporting the first call and median of three repeats.
@@ -62,6 +62,6 @@ total service RAM usage. Current process RSS after seeding and requests was
 Python allocator arenas from seeding. This is a benchmark-process snapshot, not
 the RAM of a production server or a search-only increment. The former full-catalogue Python search cache is removed.
 
-`test_search_sql.py` compares 45 queries against an independent Python reference,
+`tests/test_search_sql.py` compares 45 queries against an independent Python reference,
 including Unicode, punctuation, source/type/format/language/character filters,
 aggregate fields, ordering, page clamping and transactional update/deletion.

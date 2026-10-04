@@ -1,6 +1,11 @@
 """Real Noto/Adobe index and binary integration in a disposable FontHub archive.
 No sync is triggered and the user's catalogue is never modified.
 """
+
+# Direct execution from the repository root keeps application imports available.
+import sys as _test_sys
+from pathlib import Path as _TestPath
+_test_sys.path.insert(0,str(_TestPath(__file__).resolve().parents[1]))
 import os,tempfile
 with tempfile.TemporaryDirectory() as folder:
     os.environ['FONTHUB_DATA']=folder

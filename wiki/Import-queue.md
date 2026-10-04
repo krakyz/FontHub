@@ -88,12 +88,12 @@ Explicit source-family import returns HTTP **202** with `queued: true` and
 
 ## Verification
 
-`test_import_queue.py` covers pauses, restart state, concurrent exclusive claims,
+`tests/test_import_queue.py` covers pauses, restart state, concurrent exclusive claims,
 source-preserving external staging, error/retry and relocated restore paths.
-`test_import_recovery.py` kills imports after copy, analysis and catalogue commit.
-`test_preview_recovery.py` kills previews after partial writing and publication,
-checking reusable output and preserved originals. `test_queued_cmap.py` checks
-malformed format-4 cmap through both stages. `test_app.py` explicitly drains preview
+`tests/test_import_recovery.py` kills imports after copy, analysis and catalogue commit.
+`tests/test_preview_recovery.py` kills previews after partial writing and publication,
+checking reusable output and preserved originals. `tests/test_queued_cmap.py` checks
+malformed format-4 cmap through both stages. `tests/test_app.py` explicitly drains preview
 work before checking browser binaries. These simulate process crashes, not every
 possible storage/power failure; keep independent backups.
 

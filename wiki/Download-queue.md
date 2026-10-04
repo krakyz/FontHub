@@ -63,10 +63,10 @@ this queue covers user artifact downloads and archive import requests.
 
 ## Verification
 
-`test_download_queue.py` checks no inline network acquisition, shared intents,
+`tests/test_download_queue.py` checks no inline network acquisition, shared intents,
 source-preserving import handoff while import is paused, cached attachments,
 queued/running cancellation, missing-input retry, bounded cooldown attempts,
-recovery and portable restoration. `test_google_fonts.py` exercises real pinned
+recovery and portable restoration. `tests/test_google_fonts.py` exercises real pinned
 Google Fonts artifacts through the queue. Conversion/import regression tests
 verify that the new kind leaves existing queues and immutable originals intact.
 

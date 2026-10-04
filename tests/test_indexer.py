@@ -1,4 +1,9 @@
 """Deterministic indexer checks using a local Git remote, without upstream I/O."""
+
+# Direct execution from the repository root keeps application imports available.
+import sys as _test_sys
+from pathlib import Path as _TestPath
+_test_sys.path.insert(0,str(_TestPath(__file__).resolve().parents[1]))
 import os
 import subprocess
 import tempfile
@@ -57,7 +62,11 @@ with tempfile.TemporaryDirectory() as temporary:
     git(repo, 'add', '.')
     git(repo, 'commit', '-m', 'Broken fixture')
     os.environ['FONT_INDEXER_MIN_INTERVAL'] = '0'
-    failed = wait(client, client.post('/api/v1/sources/google-fonts/sync').json['job_id'])
+    # Expected corruption is asserted without emitting a fake CI error annotation.
+    from unittest import TestCase
+    with TestCase().assertLogs('font-indexer',level='ERROR') as captured:
+        failed = wait(client, client.post('/api/v1/sources/google-fonts/sync').json['job_id'])
+    assert 'Unclosed metadata message' in '\n'.join(captured.output)
     assert failed['status'] == 'failed'
     assert client.get('/api/v1/families/gf-fixture').json['revision'] == complete['revision']
     assert client.get('/api/v1/search').json['total'] == 1

@@ -67,7 +67,7 @@ distinct from receipt failure: only receipt failures use quarantine.
 
 ## Tests
 
-`test_archive_pipeline.py` verifies parse-free receipt, original download before
+`tests/test_archive_pipeline.py` verifies parse-free receipt, original download before
 publication, complete metadata, real OTS, refusal isolation, atomic TTC retry,
 shared WOFF2 and bounded crash recovery. Import and preview recovery tests terminate
 real processes at publication boundaries. These test process interruptions, not

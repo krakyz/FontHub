@@ -1,12 +1,17 @@
 """Offline adapter checks, using captured Noto/Adobe responses and HTML fixtures.
 These prove parsing contracts, not live availability of the two HTML sources.
 """
+
+# Direct execution from the repository root keeps application imports available.
+import sys as _test_sys
+from pathlib import Path as _TestPath
+_test_sys.path.insert(0,str(_TestPath(__file__).resolve().parents[1]))
 import tempfile
 from pathlib import Path
 from unittest.mock import patch
 from indexer.adapters import noto,adobe,font_library,font_squirrel
 from indexer.adapters.html_catalogue import pages
-FIXTURES=Path(__file__).parent/'tests'/'fixtures'
+FIXTURES=Path(__file__).parent/'fixtures'
 class Fixture:
     hosts={'fontlibrary.org','www.fontsquirrel.com'}
     def checkout(self,repository,patterns,**kwargs):

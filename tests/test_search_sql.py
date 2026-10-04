@@ -3,6 +3,11 @@
 Exercise Unicode substring semantics, short queries, punctuation, per-face
 filtering, family aggregation, source separation and all pagination orders.
 """
+
+# Direct execution from the repository root keeps application imports available.
+import sys as _test_sys
+from pathlib import Path as _TestPath
+_test_sys.path.insert(0,str(_TestPath(__file__).resolve().parents[1]))
 import json,os,tempfile,itertools
 
 def reference(faces,query):
