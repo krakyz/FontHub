@@ -202,3 +202,5 @@ the backup lock and committed additional files. Generating WOFF2 for the first
 23 MB Arial Unicode font took several minutes, so a short “file count must grow”
 timeout is not a reliable liveness check for large fonts. This iteration changes
 search performance and crash recovery, not preview compression's CPU cost.
+
+Compose healthcheck индексатора передаёт API-ключ из FONT_INDEXER_TOKEN внутри контейнера, поэтому проверка готовности работает и при включённой авторизации. CI проверяет запуск обоих контейнеров с тестовым ключом.

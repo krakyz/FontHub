@@ -36,3 +36,8 @@ jobs:
       - run: docker compose config --quiet
       - run: docker compose -p fonthub-ci build
       - run: docker run --rm --network none --entrypoint python fonthub-ci-fonthub tests/test_smoke.py
+      - run: docker compose -p fonthub-ci up -d --no-build --wait --wait-timeout 120
+        env:
+          FONT_INDEXER_TOKEN: fonthub-ci-test-token
+      - if: always()
+        run: docker compose -p fonthub-ci down

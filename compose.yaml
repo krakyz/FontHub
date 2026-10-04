@@ -9,7 +9,7 @@ services:
       - indexer-data:/data
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8766/api/v1/health',timeout=3)"]
+      test: ["CMD", "python", "-c", "import os,urllib.request; req=urllib.request.Request('http://127.0.0.1:8766/api/v1/health',headers={'X-Api-Key':os.environ.get('FONT_INDEXER_TOKEN','')}); urllib.request.urlopen(req,timeout=3)"]
       interval: 10s
       timeout: 5s
       start_period: 30s
