@@ -75,8 +75,8 @@ with tempfile.TemporaryDirectory() as folder:
   zipped=Path(backup_folder)/'export.zip';restored=Path(backup_folder)/'restored'
   archive_backup.backup(app.DATA,zipped);archive_backup.restore(zipped,restored)
   assert len(list((restored/'exports').glob('*.woff')))>=2
-  with sqlite3.connect(restored/'catalog.sqlite') as con:
+  from contextlib import closing
+  with closing(sqlite3.connect(restored/'catalog.sqlite')) as con:
    assert con.execute("SELECT paused FROM queue_control WHERE kind='convert'").fetchone()[0]==1
-   assert all(str(restored) in r[0] for r in con.execute("SELECT input_path FROM work_queue WHERE kind='convert'"))
-  con.close()
+   assert all(Path(r[0]).resolve().is_relative_to(restored.resolve()) for r in con.execute("SELECT input_path FROM work_queue WHERE kind='convert'"))
  print('PASS: native formats, original preservation, durable pause, deduplication, export download, published recovery, failure and retry')

@@ -73,7 +73,7 @@ with tempfile.TemporaryDirectory() as folder:
   archive_backup.backup(app.DATA,zipped);archive_backup.restore(zipped,restored)
   with closing(sqlite3.connect(restored/'catalog.sqlite')) as con:
    assert con.execute('SELECT COUNT(*) FROM download_tasks').fetchone()[0]>=4
-   assert all(str(restored) in r[0] for r in con.execute("SELECT input_path FROM work_queue WHERE kind='download'"))
+   assert all(Path(r[0]).resolve().is_relative_to(restored.resolve()) for r in con.execute("SELECT input_path FROM work_queue WHERE kind='download'"))
    saved=json.loads(con.execute('SELECT record FROM download_tasks LIMIT 1').fetchone()[0]);assert saved['revision']==row['revision']
  # The real transport reports bounded chunks and cancellation never publishes.
  import io,indexer_client
